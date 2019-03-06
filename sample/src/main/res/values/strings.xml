@@ -1,0 +1,6 @@
+<resources>
+    <string name="app_name">OtpSecure Android</string>
+    <string name="ok">OK</string>
+    <string name="validationMsg">Validation Message</string>
+    <string name="progressMessage">Processing&#8230;</string>
+</resources>
