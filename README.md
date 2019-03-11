@@ -12,32 +12,55 @@ What things you need to install the software:
  - Android SDK
  - Gradle
  - Maven
+ 
+### Download
 
-### Gradle
+Download this repository and add the 
+[Android Library Module](https://github.com/ecertic/otpsecure-android/tree/master/library) 
+to your project.
 
-`compile 'com.ecertic.otpsecure:otpsecure-android:1'`
 
-### Maven
+### Building
+
+A step by step series of examples that tell you have to get a development env running
+
+```
+gradle clean build
+```
+
+### Running the tests
+
+Explain how to run the automated tests for this system
+
+```
+gradle test
+```
+
+### Installing 
+At this moment this otp-secure library is not yet deployed in any public artifactory, so compilation
+and building must be doing "by hand".
+
+Dev team is currently working in gradle deployment tasks
+
+#### Gradle
+
+`implementation 'com.ecertic.otpsecure:otpsecure-android:1.0.0-SANPSHOT'`
+
+Note: We recommend that you don't use compile 'com.ecertic.otpsecure:otpsecure-android:+, as future 
+versions of the SDK may not maintain full backwards compatibility. When such a change occurs, 
+a major version number change will accompany it.
+
+#### Maven
 
 ```
 <dependency>
     <groupId>com.ecertic.otpsecure</groupId>
     <artifactId>otpsecure-android</artifactId>
-    <version>1</version>
+    <version>1.0.0-SNAPSHOT</version>
 </dependency>
 ```
 
-### Download
 
-Download this repository and add the [Android Library Module](https://github.com/ecertic/otpsecure-android/tree/master/library) to your project. Then add the dependency on your gradle file:
-
-```groovy
-...
-dependencies {
-    ...
-    compile project(':otpsecure-android')
-}
-```
 
 ## Usage
 
