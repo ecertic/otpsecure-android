@@ -30,10 +30,17 @@ allprojects {
 ext {
     compileSdkVersion = 26
 
-
     androidxAnnotationVersion = '1.0.0'
     javaAnnotationVersion = "1.0"
     junitVersion = "4.12"
     mockitoCoreVersion = "2.10.0"
     robolectricVersion = "4.1"
+}
+
+if (JavaVersion.current().isJava8Compatible()) {
+    allprojects {
+        tasks.withType(Javadoc) {
+            options.addStringOption('Xdoclint:none', '-quiet')
+        }
+    }
 }
