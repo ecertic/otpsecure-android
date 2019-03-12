@@ -29,6 +29,8 @@ allprojects {
 
 ext {
     compileSdkVersion = 26
+    minSdkVersion = 14
+
 
     androidxAnnotationVersion = '1.0.0'
     javaAnnotationVersion = "1.0"
