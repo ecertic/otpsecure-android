@@ -13,16 +13,36 @@ What things you need to install the software:
  - Gradle
  - Maven
  
-### Download
+### Installing 
+This library is published in Maven Central, so just add the dependency into your project in function
+of the dependency management tool used.
 
-Download this repository and add the 
-[Android Library Module](https://github.com/ecertic/otpsecure-android/tree/master/library) 
-to your project.
+#### Gradle
+
+` implementation 'com.ecertic.otpsecure:otpsecure-android:1.0.0'`
+
+Note: We recommend that you don't use compile 'com.ecertic.otpsecure:otpsecure-android:+, as future 
+versions of the SDK may not maintain full backwards compatibility. When such a change occurs, 
+a major version number change will accompany it.
+
+#### Maven
+
+```
+<dependency>
+    <groupId>com.ecertic.otpsecure</groupId>
+    <artifactId>otpsecure-android</artifactId>
+    <version>1.0.0</version>
+</dependency>
+```
 
 
 ### Building
 
-A step by step series of examples that tell you have to get a development env running
+A step by step series of examples that tell you have to get a development env running.
+
+Download this repository and add the 
+[Android Library Module](https://github.com/ecertic/otpsecure-android/tree/master/library) 
+to your project.
 
 ```
 gradle clean build
@@ -36,44 +56,23 @@ Explain how to run the automated tests for this system
 gradle test
 ```
 
-### Installing 
-At this moment this otp-secure library is not yet deployed in any public artifactory, so compilation
-and building must be doing "by hand".
-
-Dev team is currently working in gradle deployment tasks
-
-#### Gradle
-
-`implementation 'com.ecertic.otpsecure:otpsecure-android:1.0.0-SANPSHOT'`
-
-Note: We recommend that you don't use compile 'com.ecertic.otpsecure:otpsecure-android:+, as future 
-versions of the SDK may not maintain full backwards compatibility. When such a change occurs, 
-a major version number change will accompany it.
-
-#### Maven
-
-```
-<dependency>
-    <groupId>com.ecertic.otpsecure</groupId>
-    <artifactId>otpsecure-android</artifactId>
-    <version>1.0.0-SNAPSHOT</version>
-</dependency>
-```
-
-
-
 ## Usage
 
-In order to use the library, developers must use `OtpSecure.java` which exposes methods needed to retrieve operation info by token and to validate tokens against otps.
+In order to use the library, developers must use `OtpSecure.java` which exposes methods needed to 
+retrieve operation info by token and to validate tokens against otps.
 
-> Asynchronous methods involve to instance a callback proper class (for example OperationInfoCallback ) where `onSuccess()` is returned when  `httpResponseStatusCode > = 200 && httpResponseStatusCode < 300`
- and `onError()` is returned when `httpResponseStatusCode > 300`. Please take a look into `*Callback.java` to check which classes handle the callback methods.
+> Asynchronous methods involve to instance a callback proper class 
+(for example OperationInfoCallback ) where `onSuccess()` is returned when  
+`httpResponseStatusCode > = 200 && httpResponseStatusCode < 300` and `onError()` is returned when 
+`httpResponseStatusCode > 300`. Please take a look into `*Callback.java` to check which classes 
+handle the callback methods.
 
 Following sections allow developers to figure how to use OtpSecure library out.
   
 ### Using `OtpSecure.retrieveOperationInfoByToken`
 
-You can use retrieve operationInfo by token as shown in the following snippet. Also, sample-app contains examples of how to use it.
+You can use retrieve operationInfo by token as shown in the following snippet. Also, sample-app 
+contains examples of how to use it.
 
 
 ```java
@@ -102,7 +101,8 @@ You can use retrieve operationInfo by token as shown in the following snippet. A
  
 ```
 
-**Note** retrieveOperationInfoByToken method is also implemented in a synchronous way like `OtpSecure.retrieveOperationInfoByTokenSynchronous`
+**Note** retrieveOperationInfoByToken method is also implemented in a synchronous way like 
+`OtpSecure.retrieveOperationInfoByTokenSynchronous`
 
 #### endpoint /token
 
@@ -137,7 +137,8 @@ This endpoint is responsible for retrieving operation info. Responses for this e
 
 ### Using `OtpSecure.validateToken`
 
-You can validate a token against otp as shown in the following snippet. Sample-app contains examples of how to use it.
+You can validate a token against otp as shown in the following snippet. Sample-app contains examples
+ of how to use it.
 
 ```java
 
@@ -165,13 +166,15 @@ You can validate a token against otp as shown in the following snippet. Sample-a
     }
  
 ```
-**Note** validateToken method is also implemented in a synchronous way as `OtpSecure.validateTokenSynchronous`
+**Note** validateToken method is also implemented in a synchronous way as 
+`OtpSecure.validateTokenSynchronous`
 
 #### endpoint /validate
 
 This endpoint is responsible for validating tokens against otp. Responses for this endpoint are:
 
- 1. If (token == null || token.isEmpty() || otp == null || otp.isEmpty()) then return **HttpResponse.400**
+ 1. If (token == null || token.isEmpty() || otp == null || otp.isEmpty()) then 
+ return **HttpResponse.400**
  
  2. If (token && otp && !token.find()) then return **HttpResponse.404**
    
@@ -221,7 +224,8 @@ This endpoint is responsible for validating tokens against otp. Responses for th
 
 ## Sample app
 
-This repository includes one sample app which depends on a hardcoded operationInfo in `MainActivity.java`
+This repository includes one sample app which depends on a hardcoded operationInfo in 
+`MainActivity.java`
 
 ```java
 public class MainActivity extends AppCompatActivity {
@@ -230,13 +234,17 @@ public class MainActivity extends AppCompatActivity {
 
 ``` 
 
-**Note** that in order to get an operation token for demo/testing purposes, please send an email to `rtapias@ecertic.com` and we will contact you as soon as possible. 
+**Note** that in order to get an operation token for demo/testing purposes, please send an email to 
+`rtapias@ecertic.com` and we will contact you as soon as possible. 
 
-To build and run the example apps, clone the repository and open the project. Running "sample" will run the Example application
+To build and run the example apps, clone the repository and open the project. Running "sample" will 
+run the Example application
 
 ## Acknowledges
 
-This repo is a small and lightweight custom version of a [stripe-android project](https://github.com/stripe/stripe-android) published in github under MIT license. 
+This repo is a small and lightweight custom version of a 
+[stripe-android project](https://github.com/stripe/stripe-android) published in github under MIT 
+license. 
 
 ## License
 
