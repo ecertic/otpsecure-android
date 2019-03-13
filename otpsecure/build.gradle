@@ -1,5 +1,5 @@
 apply plugin: 'com.android.library'
-apply from: 'deploy.gradle'
+
 dependencies {
     implementation "androidx.annotation:annotation:${rootProject.ext.androidxAnnotationVersion}"
     compileOnly "javax.annotation:jsr250-api:${rootProject.ext.javaAnnotationVersion}"
@@ -17,10 +17,10 @@ android {
     compileSdkVersion rootProject.ext.compileSdkVersion
 
     defaultConfig {
-        minSdkVersion 14
+        minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.compileSdkVersion
-        versionCode 1
-        versionName "1.0"
+        versionCode Integer.parseInt(VERSION_CODE)
+        versionName VERSION_NAME
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
@@ -45,3 +45,6 @@ repositories {
 }
 
 dependencies {}
+
+//apply at the end to allow deploy.gradle to check if isSnapshot()
+apply from: 'deploy.gradle'
