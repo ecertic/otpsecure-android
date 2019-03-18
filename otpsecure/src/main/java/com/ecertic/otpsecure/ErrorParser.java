@@ -9,7 +9,7 @@ import androidx.annotation.Nullable;
 class ErrorParser {
 
     static final String MALFORMED_RESPONSE_MESSAGE =
-            "An improperly formatted error response was found.";
+            "An improperly formatted error response was found";
 
     private static final String FIELD_CODE = "code";
     private static final String FIELD_ERROR = "error";
