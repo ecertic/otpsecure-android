@@ -4,6 +4,8 @@ dependencies {
     implementation "androidx.annotation:annotation:${rootProject.ext.androidxAnnotationVersion}"
     compileOnly "javax.annotation:jsr250-api:${rootProject.ext.javaAnnotationVersion}"
 
+    compileOnly "com.android.support:appcompat-v7:28.0.0" //for minSDK permission
+
     testImplementation "junit:junit:${rootProject.ext.junitVersion}"
     testImplementation "org.mockito:mockito-core:${rootProject.ext.mockitoCoreVersion}"
     testImplementation "org.robolectric:robolectric:${rootProject.ext.robolectricVersion}"
@@ -31,6 +33,7 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+
 
     testOptions {
         unitTests {
