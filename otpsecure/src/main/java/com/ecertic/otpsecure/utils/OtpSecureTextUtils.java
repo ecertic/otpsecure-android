@@ -1,4 +1,4 @@
-package com.ecertic.otpsecure;
+package com.ecertic.otpsecure.utils;
 
 import java.io.UnsupportedEncodingException;
 import java.security.MessageDigest;
