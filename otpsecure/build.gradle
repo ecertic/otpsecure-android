@@ -24,17 +24,9 @@ android {
         targetSdkVersion rootProject.ext.compileSdkVersion
         versionCode Integer.parseInt(VERSION_CODE)
         versionName VERSION_NAME
-
+        consumerProguardFiles 'otpsecure-proguard-rules.pro'
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
-
-    buildTypes {
-        release {
-            minifyEnabled false
-            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
-        }
-    }
-
 
     testOptions {
         unitTests {
