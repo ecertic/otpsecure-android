@@ -19,7 +19,7 @@ of the dependency management tool used.
 
 #### Gradle
 
-` implementation 'com.ecertic.otpsecure:otpsecure-android:1.0.0'`
+` implementation 'com.ecertic.otpsecure:otpsecure-android:1.1.0-SNAPSHOT'`
 
 Note: We recommend that you don't use compile 'com.ecertic.otpsecure:otpsecure-android:+, as future 
 versions of the SDK may not maintain full backwards compatibility. When such a change occurs, 
@@ -31,7 +31,7 @@ a major version number change will accompany it.
 <dependency>
     <groupId>com.ecertic.otpsecure</groupId>
     <artifactId>otpsecure-android</artifactId>
-    <version>1.0.0</version>
+    <version>1.1.0-SNAPSHOT</version>
 </dependency>
 ```
 
