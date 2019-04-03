@@ -100,7 +100,7 @@ public class Environment {
 
     @Override
     public String toString() {
-        final StringBuffer sb = new StringBuffer("Environment{");
+        final StringBuilder sb = new StringBuilder("Environment{");
         sb.append("ip='").append(ip).append('\'');
         sb.append(", mac='").append(mac).append('\'');
         sb.append(", iccid='").append(iccid).append('\'');
@@ -133,7 +133,7 @@ public class Environment {
             return env;
         }
 
-        private final boolean checkPermission(String permission) {
+        private boolean checkPermission(String permission) {
 
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
                 // targetSdkVersion >= Android M, we can
@@ -148,14 +148,14 @@ public class Environment {
 
         }
 
-        private static final String getIp() {
+        private static String getIp() {
             Inet4Address inet4Address = getCurrentInet4Address();
             return (inet4Address != null) ? inet4Address.getHostAddress() : null;
 
         }
 
         //only returns MAC if network technology is IEEE 802 standard
-        private static final String getMAC() {
+        private static String getMAC() {
             Inet4Address inet4Address = getCurrentInet4Address();
             try {
                 NetworkInterface network = NetworkInterface.getByInetAddress(inet4Address);
@@ -175,7 +175,7 @@ public class Environment {
         }
 
 
-        private static final Inet4Address getCurrentInet4Address() {
+        private static Inet4Address getCurrentInet4Address() {
             try {
                 for (Enumeration<NetworkInterface> en = NetworkInterface.getNetworkInterfaces();
                      en.hasMoreElements(); ) {
@@ -197,7 +197,7 @@ public class Environment {
             return null;
         }
 
-        private final String getSimSerialNumber() {
+        private String getSimSerialNumber() {
             if (checkPermission(Manifest.permission.READ_PHONE_STATE)) {
                 return getTelephonyManager().getSimSerialNumber();
             }
@@ -205,7 +205,7 @@ public class Environment {
 
         }
 
-        private final String getImei() {
+        private String getImei() {
             if (checkPermission(Manifest.permission.READ_PHONE_STATE)) {
                 return getTelephonyManager().getDeviceId();
             }
@@ -213,29 +213,29 @@ public class Environment {
 
         }
 
-        private final String getCarrier() {
+        private String getCarrier() {
             return getTelephonyManager().getNetworkOperatorName();
         }
 
-        private final TelephonyManager getTelephonyManager() {
+        private TelephonyManager getTelephonyManager() {
             return (TelephonyManager)
                     context.getSystemService(Context.TELEPHONY_SERVICE);
         }
 
-        private static final String getDeviceModel() {
+        private static String getDeviceModel() {
             return Build.DEVICE;
         }
 
-        private static final String getOs() {
+        private static String getOs() {
             return "Android " + Build.VERSION.RELEASE;
         }
 
-        private final String getAndroidId() {
+        private String getAndroidId() {
             return Settings.Secure.getString(context.getContentResolver(),
                     Settings.Secure.ANDROID_ID);
         }
 
-        private final String getLocation() {
+        private String getLocation() {
             final ExecutorService executor = Executors.newFixedThreadPool(1);
             Future<String> result = executor.submit(new Callable<String>() {
                 @Override

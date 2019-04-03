@@ -64,7 +64,7 @@ public class MainActivity extends AppCompatActivity {
                                            String[] permissions, int[] grantResults) {
         if (requestCode == 1
                 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-            //  gps functionality
+            //Do nothing intentionally
         }
     }
 

@@ -6,8 +6,6 @@ import android.content.Context;
 import android.provider.Settings;
 import android.telephony.TelephonyManager;
 
-import com.google.android.gms.location.FusedLocationProviderClient;
-
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -15,12 +13,11 @@ import org.robolectric.RobolectricTestRunner;
 import org.robolectric.Shadows;
 import org.robolectric.shadows.ShadowApplication;
 import org.robolectric.shadows.ShadowTelephonyManager;
-import org.robolectric.shadows.gms.common.ShadowGoogleApiAvailability;
 
 import androidx.test.core.app.ApplicationProvider;
 
-import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotEquals;
+import static org.junit.Assert.assertNull;
 
 /**
  * Test class for {@link Environment}.
@@ -31,8 +28,6 @@ public class EnvironmentTest {
 
     private ShadowApplication application;
     private ShadowTelephonyManager telephonyManager;
-    private ShadowGoogleApiAvailability googleApiAvailability;
-    private FusedLocationProviderClient fusedLocationClient;
 
     @Before
     public void setup_EnvironmentTest() {
@@ -68,9 +63,10 @@ public class EnvironmentTest {
         assertNotEquals(env.getCarrier(), null);
         assertNotEquals(env.getDevice(), null);
         assertNotEquals(env.getOs(), null);
+        assertNotEquals(env.getDevUuid(), null);
 
         //TODO: update when ShadowFusedLocationClient is implemented.
-        assertEquals(env.getLocalization(), null);
+        assertNull(env.getLocalization());
     }
 
     @Test
@@ -78,12 +74,13 @@ public class EnvironmentTest {
         Environment env = new Environment.Builder(ApplicationProvider.getApplicationContext()).build();
         assertNotEquals(env.getIp(), null);
         assertNotEquals(env.getMac(), null);
-        assertEquals(env.getIccid(), null);
-        assertEquals(env.getImei(), null);
+        assertNull(env.getIccid());
+        assertNull(env.getImei());
         assertNotEquals(env.getCarrier(), null);
         assertNotEquals(env.getDevice(), null);
         assertNotEquals(env.getOs(), null);
-        assertEquals(env.getLocalization(), null);
+        assertNotEquals(env.getDevUuid(), null);
+        assertNull(env.getLocalization());
     }
 
     @Test
@@ -93,8 +90,8 @@ public class EnvironmentTest {
         application.grantPermissions(permissions);
 
         Environment env = new Environment.Builder(ApplicationProvider.getApplicationContext()).build();
-        assertEquals(env.getIccid(), null);
-        assertEquals(env.getImei(), null);
+        assertNull(env.getIccid());
+        assertNull(env.getImei());
     }
 
     @Test
@@ -114,6 +111,6 @@ public class EnvironmentTest {
                 Manifest.permission.READ_PHONE_STATE};
         application.grantPermissions(permissions);
         Environment env = new Environment.Builder(ApplicationProvider.getApplicationContext()).build();
-        assertEquals(env.getLocalization(), null);
+        assertNull(env.getLocalization());
     }
 }
