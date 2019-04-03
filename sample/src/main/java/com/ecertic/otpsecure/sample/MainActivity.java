@@ -1,6 +1,9 @@
 package com.ecertic.otpsecure.sample;
 
+import android.Manifest;
+import android.content.pm.PackageManager;
 import android.os.Bundle;
+import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.widget.Button;
 import android.widget.EditText;
@@ -10,7 +13,7 @@ import com.ecertic.otpsecure.sample.module.DependencyHandler;
 
 public class MainActivity extends AppCompatActivity {
 
-    private static final String OPERATION_TOKEN = "<INSERT_OPERATION_TOKEN_HERE>";
+    private static final String OPERATION_TOKEN = "f699b33ca5d99b37ccd9d872fabd95d05554584550a9afc890c6c88b5201fe4d";
 
     private DependencyHandler mDependencyHandler;
 
@@ -35,6 +38,8 @@ public class MainActivity extends AppCompatActivity {
 
         mDependencyHandler.clearReferences();
 
+        ActivityCompat.requestPermissions(this,new String[]{Manifest.permission.ACCESS_FINE_LOCATION}, 1);
+
         // Asynchronous retrieve OperationInfo with AsyncTask
         mDependencyHandler.attachAsyncTaskOperationInfoController(retrieveButton);
 
@@ -52,6 +57,15 @@ public class MainActivity extends AppCompatActivity {
         mDependencyHandler.attachIntentServiceValidationController(this,
                 validateButton);
          */
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode,
+                                           String[] permissions, int[] grantResults) {
+        if (requestCode == 1
+                && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+            //  gps functionality
+        }
     }
 
 }

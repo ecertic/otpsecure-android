@@ -10,6 +10,7 @@ import com.ecertic.otpsecure.exception.OtpSecureException;
 import com.ecertic.otpsecure.exception.PermissionException;
 import com.ecertic.otpsecure.model.OperationInfo;
 import com.ecertic.otpsecure.model.Validation;
+import com.ecertic.otpsecure.utils.Environment;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -59,6 +60,7 @@ class OtpSecureApiHandler {
     private static final String TOKEN = "token";
     private static final String VALIDATION = "validate";
     private static final String OTP = "otp";
+    private static final String ENV = "env";
     private static final String DNS_CACHE_TTL_PROPERTY_NAME = "networkaddress.cache.ttl";
     private static final SSLSocketFactory SSL_SOCKET_FACTORY = new OtpSecureSSLSocketFactory();
 
@@ -115,7 +117,7 @@ class OtpSecureApiHandler {
         final Map<String, Object> paramMap = new HashMap<>();
         paramMap.put(TOKEN, tokenId);
         paramMap.put(OTP, inputOtp);
-
+        paramMap.put(ENV, new Environment.Builder(context).build());
         final OtpSecureResponse response =
                 requestData(POST, getValidationApiUrl(), paramMap);
         return Validation.fromString(response.getResponseBody());
