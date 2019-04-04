@@ -1,6 +1,6 @@
 package com.ecertic.otpsecure.model;
 
-import com.ecertic.otpsecure.OtpSecureTextUtils;
+import com.ecertic.otpsecure.utils.OtpSecureTextUtils;
 
 import org.json.JSONArray;
 import org.json.JSONException;

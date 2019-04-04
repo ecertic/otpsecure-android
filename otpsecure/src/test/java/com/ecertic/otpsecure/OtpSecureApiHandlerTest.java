@@ -1,6 +1,5 @@
 package com.ecertic.otpsecure;
 
-import com.ecertic.otpsecure.exception.AuthenticationException;
 import com.ecertic.otpsecure.exception.OtpSecureException;
 import com.ecertic.otpsecure.model.OperationInfo;
 import com.ecertic.otpsecure.model.Validation;
@@ -124,6 +123,5 @@ public class OtpSecureApiHandlerTest {
             assertEquals(e.getStatusCode(), expectedHttpStatusCode);
         }
     }
-
 
 }

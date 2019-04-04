@@ -1,4 +1,6 @@
-package com.ecertic.otpsecure;
+package com.ecertic.otpsecure.utils;
+
+import com.ecertic.otpsecure.utils.OtpSecureTextUtils;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;

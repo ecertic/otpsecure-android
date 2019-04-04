@@ -2,11 +2,14 @@ apply plugin: 'com.android.library'
 
 dependencies {
     implementation "androidx.annotation:annotation:${rootProject.ext.androidxAnnotationVersion}"
+    implementation "com.google.android.gms:play-services-location:16.0.0"
     compileOnly "javax.annotation:jsr250-api:${rootProject.ext.javaAnnotationVersion}"
 
     testImplementation "junit:junit:${rootProject.ext.junitVersion}"
     testImplementation "org.mockito:mockito-core:${rootProject.ext.mockitoCoreVersion}"
     testImplementation "org.robolectric:robolectric:${rootProject.ext.robolectricVersion}"
+    testImplementation "org.robolectric:shadows-playservices:${rootProject.ext.robolectricVersion}"
+
     testImplementation 'androidx.test:core:1.1.0'
 
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.1.1'
@@ -21,15 +24,8 @@ android {
         targetSdkVersion rootProject.ext.compileSdkVersion
         versionCode Integer.parseInt(VERSION_CODE)
         versionName VERSION_NAME
-
+        consumerProguardFiles 'otpsecure-proguard-rules.pro'
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
-    }
-
-    buildTypes {
-        release {
-            minifyEnabled false
-            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
-        }
     }
 
     testOptions {

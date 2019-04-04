@@ -9,7 +9,7 @@ import java.util.Map;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
-import static com.ecertic.otpsecure.OtpSecureUtils.removeNullAndEmptyParams;
+import static com.ecertic.otpsecure.utils.OtpSecureUtils.removeNullAndEmptyParams;
 import static com.ecertic.otpsecure.model.OtpSecureJsonUtils.optString;
 import static com.ecertic.otpsecure.model.OtpSecureJsonUtils.putStringIfNotNull;
 
